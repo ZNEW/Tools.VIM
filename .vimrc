@@ -1,38 +1,46 @@
 
-let l_IsWinOS = (has('win32') || has('win64')) 
+let g:IsWindowsOS = (has('win32') || has('win64'))
 
+let s:UserVimrcFileName = g:IsWindowsOS ? '_vimrc' : '.vimrc'
 
-let l_UserVimRC = l_IsWinOS ? '_vimrc' : '.vimrc'
+:exec ':autocmd! bufwritepost ' . s:UserVimrcFileName . ' source %'
 
-:exec ':autocmd! bufwritepost ' . l_UserVimRC . ' source %'
+let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 
+:exec ':source ' . g:UserVimFilesFolderName . '/Abbreviations.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/AutoIndent.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/Autocmd.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/Backup.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/CtagsConfig.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/CtrlpConfig.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/EditorConfig.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/Keyboard.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/KeyMapping.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/Mouse.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/MyFunctions.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/NERDTreeConfig.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/OmniCppCompleteConfig.vim'
+":exec ':source ' . g:UserVimFilesFolderName . '/PythonConfig.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/RestoreLastCursorPos.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/ThemeAndSyntaxHighlighting.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/TagListConfig.vim'
 
-let l_UserVimFiles = l_IsWinOS ? '$HOME/vimfiles' : '$HOME/.vim'
-
-:exec ':source ' . l_UserVimFiles . '/MartinBrochhaus.vim'
-:exec ':source ' . l_UserVimFiles . '/MyFunctions.vim'
-:exec ':source ' . l_UserVimFiles . '/Backup.vim'
-:exec ':source ' . l_UserVimFiles . '/RestoreLastCursorPos.vim'
-:exec ':source ' . l_UserVimFiles . '/NERDTreeConfig.vim'
-:exec ':source ' . l_UserVimFiles . '/ShowCursorLine.vim'
-:exec ':source ' . l_UserVimFiles . '/Abbreviations.vim'
-:exec ':source ' . l_UserVimFiles . '/TagListConfig.vim'
-:exec ':source ' . l_UserVimFiles . '/CtagsConfig.vim'
-
-nnoremap <C-t> <C-]>
-
-set nocompatible
+" Setup Pathogen to manage your plugins
+" mkdir -p ~/.vim/autoload ~/.vim/bundle
+" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
+"Now you can install any plugin into a .vim/bundle/plugin-name/ folder
+call pathogen#infect()
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-
 set diffexpr=MyDiff2()
 
-"" map <Leader>p i<Esc>ea()<Esc>
-"" map <Leader>c i<Esc>ea{}<Esc>
-
-set nocp
 filetype plugin on
 
+"A REGARDER
+" Python folding
+" mkdir -p ~/.vim/ftplugin
+" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
+" set nofoldenable

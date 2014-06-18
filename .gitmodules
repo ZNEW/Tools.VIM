@@ -34,9 +34,7 @@
 [submodule "bundle/visual_studio.vim"]
 	path = bundle/visual_studio.vim
 	url = https://github.com/vim-scripts/visual_studio.vim
-[submodule "/Users/Zog/.vim/bundle/vim-airline"]
-	path = /Users/Zog/.vim/bundle/vim-airline
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline
-[submodule "bundle/supertab"]
-	path = bundle/supertab
-	url = https://github.com/ervandew/supertab.git
+

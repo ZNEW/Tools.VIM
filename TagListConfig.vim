@@ -1,10 +1,12 @@
 " [PLUGIN] TList : Panneau qui liste les fonctions {{{1
 " -----------------------------------------------------
+
+
     filetype on
     filetype plugin on
 
     " Indiquer le chemin de ctags
-    "let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+    let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
     " Langages
     au BufRead,BufNewFile *.js      set filetype=javascript
@@ -12,11 +14,19 @@
     au BufRead,BufNewFile *.css     set filetype=css
     au BufRead,BufNewFile *.scss    set filetype=scss
     au BufRead,BufNewFile *.php     set filetype=php
+    au BufRead,BufNewFile *.cpp     set filetype=cpp
+    au BufRead,BufNewFile *.c       set filetype=c
+    au BufRead,BufNewFile *.py      set filetype=python
+
+
     let tlist_javascript_settings   = 'vimjavascript;c:CLASSES;p:PROPERTIES;g:GETTER/SETTER;f:METHODS'
     let tlist_actionscript_settings = 'vimactionscript;c:CLASSES;f:METHODS;p:PROPERTIES'
     let tlist_css_settings          = 'vimcss;e:SECTIONS'
     let tlist_scss_settings         = 'vimcss;e:SECTIONS'
     let tlist_php_settings          = 'vimphp;c:CLASSES;p:PROPERTIES;f:METHODS'
+    let tlist_cpp_settings          = 'c++;c:class;f:function'
+    let tlist_c_settings            = 'c;f:My Functions'
+"    let tlist_python_settings       = 'vimpython;f:My Functions'
 
     " Fermer Vim s'il ne reste que Tlist
     let Tlist_Exit_OnlyWindow = 1
@@ -48,8 +58,37 @@
     " Replie automatiquement les fichiers inactifs
     let Tlist_File_Fold_Auto_Close = 1
 
+    let Tlist_Use_SingleClick = 1
+
     " Persistance
-    "autocmd TabLeave * wincmd p
-    "autocmd TabEnter * execute ResumeTList()
+    " autocmd TabLeave * wincmd p
+    autocmd TabEnter * execute ResumeTList()
+
+    " F8 : [PLUGIN] TList
+    map <silent> <F8> :execute ToggleTList()<cr>
+    imap <F8> <Esc><F8>
+    vmap <F8> <Esc><F8>
+
+    " Afficher / Cacher TList
+    let g:tlistopened=0
+    
+    function! ToggleTList()
+        execute(":TlistToggle")
+        if g:tlistopened != 0
+            let g:tlistopened=0
+        else
+            let g:tlistopened=1
+        endif
+    endfunction
+
+    function! ResumeTList()
+        if g:tlistopened != 0
+            execute(":TlistClose")
+            execute(":TlistOpen")
+        else
+            execute(":TlistClose")
+        endif
+    endfunction
+
 
 " }}}1
