@@ -38,3 +38,6 @@
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline
 
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab.git
