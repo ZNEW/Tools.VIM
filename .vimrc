@@ -45,4 +45,14 @@ filetype plugin on
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
 " set nofoldenable
 
-set foldmethod=manual
+"set foldmethod=manual
+
+"let g:Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+"let TaglistTooPosition='right'
+"let g:Tlist_Use_SingleClick=1
+ " F8 : [PLUGIN] TList
+"    map <silent> <F8> :execute (":TlistToo")<cr>
+"    imap <F8> <Esc><F8>
+"    vmap <F8> <Esc><F8
+
+set completeopt+=preview

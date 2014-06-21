@@ -44,3 +44,9 @@
 [submodule "bundle/taglisttoo"]
 	path = bundle/taglisttoo
 	url = https://github.com/ervandew/taglisttoo.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = git://github.com/SirVer/ultisnips.git
+[submodule "bundle/clang_complete"]
+	path = bundle/clang_complete
+	url = http://github.com/Rip-Rip/clang_complete

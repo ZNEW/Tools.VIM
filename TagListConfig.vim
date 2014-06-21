@@ -32,7 +32,7 @@
     let Tlist_Exit_OnlyWindow = 1
 
     " La panneau gagne le focus dès qu'il est ouvert
-    "let Tlist_GainFocus_On_ToggleOpen = 0
+    let Tlist_GainFocus_On_ToggleOpen = 0
 
     " Une fois une fonction sélectionnée, on ferme le panneau
     let Tlist_Close_On_Select = 0
@@ -58,11 +58,7 @@
     " Replie automatiquement les fichiers inactifs
     let Tlist_File_Fold_Auto_Close = 1
 
-    let Tlist_Use_SingleClick = 1
-
-    " Persistance
-    " autocmd TabLeave * wincmd p
-    autocmd TabEnter * execute ResumeTList()
+    "let Tlist_Use_SingleClick = 1
 
     " F8 : [PLUGIN] TList
     map <silent> <F8> :execute ToggleTList()<cr>
@@ -71,24 +67,28 @@
 
     " Afficher / Cacher TList
     let g:tlistopened=0
-    
+
     function! ToggleTList()
         execute(":TlistToggle")
         if g:tlistopened != 0
-            let g:tlistopened=0
+           let g:tlistopened=0
         else
             let g:tlistopened=1
         endif
     endfunction
+"
+    " Persistance
+    " autocmd TabLeave * wincmd p
+    "autocmd TabEnter * execute ResumeTList()
 
-    function! ResumeTList()
-        if g:tlistopened != 0
-            execute(":TlistClose")
-            execute(":TlistOpen")
-        else
-            execute(":TlistClose")
-        endif
-    endfunction
+"    function! ResumeTList()
+"        if g:tlistopened != 0
+"            execute(":TlistClose")
+"            execute(":TlistOpen")
+"        else
+"            execute(":TlistClose")
+"        endif
+"    endfunction
 
 
 " }}}1
