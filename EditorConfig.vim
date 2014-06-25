@@ -34,3 +34,7 @@ set nocompatible
 set history=700
 set undolevels=700
 
+" Relative line number
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
