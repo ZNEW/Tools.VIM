@@ -21,6 +21,9 @@ highlight ColorColumn ctermbg=233
 "mettre en évidence la ligne sur laquelle se trouve mon curseur
 set cursorline
 highlight CursorLine guibg=#001000
+" Relative line number
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 
 autocmd BufRead,BufNewFile *.py syntax on
 "syntax on

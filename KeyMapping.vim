@@ -56,6 +56,11 @@ vnoremap > >gv " better indentation
 vmap Q gq
 nmap Q gqap
 
+"Diff
+map <leader>dj ]c
+map <leader>dk [c
+map <leader>du <esc>:diffupdate<CR>
+
 
 
 map <Tab>n <esc>:tabnew<CR>
