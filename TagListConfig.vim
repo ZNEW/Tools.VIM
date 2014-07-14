@@ -6,7 +6,7 @@
     filetype plugin on
 
     " Indiquer le chemin de ctags
-    let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+    let Tlist_Ctags_Cmd = g:IsWindowsOS ? 'ctags.exe' : '/usr/local/bin/ctags'
 
     " Langages
     au BufRead,BufNewFile *.js      set filetype=javascript

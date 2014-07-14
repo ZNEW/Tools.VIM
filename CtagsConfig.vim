@@ -1,5 +1,5 @@
 
-let g:ctags_path = '/usr/local/bin/ctags'
+let g:ctags_path = g:IsWindowsOS ? 'ctags.exe' : '/usr/local/bin/ctags'
 
 let g:ctags_statusline = 0
 

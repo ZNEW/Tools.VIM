@@ -30,3 +30,6 @@ autocmd BufRead,BufNewFile *.py syntax on
 
 set laststatus=2
 
+if ( has('win32') )
+    set guifont=Courier_New:h12:cANSI
+endif
