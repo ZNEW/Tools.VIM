@@ -52,15 +52,6 @@ filetype plugin on
 "    imap <F8> <Esc><F8>
 "    vmap <F8> <Esc><F8
 
-" under testing
-set completeopt+=preview
-
-"clang_complete
-let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
-if isdirectory(s:clang_library_path)
-    let g:clang_library_path=s:clang_library_path
-endif
-
 "let s:default_path = escape(&path, '\ ') " store default value of 'path'
 
 " Always add the current file's directory to the path and tags list if not
