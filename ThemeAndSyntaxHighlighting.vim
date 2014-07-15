@@ -31,5 +31,22 @@ autocmd BufRead,BufNewFile *.py syntax on
 set laststatus=2
 
 if ( has('win32') || has('win64') )
-    set guifont=Courier_New:h12:cANSI
+    set guifont=Courier_New:h10:cANSI
 endif
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window (for an alternative on Windows, see simalt below).
+  if  ( has('win32') || has('win64') )
+      set lines=60 columns=140
+  endif
+else
+  " This is console Vim.
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
+
