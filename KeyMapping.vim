@@ -64,6 +64,7 @@ map <leader>du <esc>:diffupdate<CR>
 
 
 map <Tab>n <esc>:tabnew<CR>
+map <Tab>x <esc>:tabclose<CR>
 
 " make ` execute the contents of the a register
 nnoremap ` @a
