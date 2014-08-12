@@ -1,0 +1,9 @@
+cd ~/.vim
+git submodule add -f https://github.com/Valloric/YouCompleteMe.git bundle/YouCompleteMe
+git submodule update --init --recursive
+installation de monodevelop
+    MonoFramework-MRE-3.4.0.macos10.xamarin.x86.pkg
+    XamarinStudio-5.0.1.3-0.dmg
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer --omnisharp-completer
+

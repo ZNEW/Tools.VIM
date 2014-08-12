@@ -10,7 +10,6 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Abbreviations.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Autocmd.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/AutoIndent.vim'
-:exec ':source ' . g:UserVimFilesFolderName . '/Backup.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/CtagsConfig.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/CtrlpConfig.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/EditorConfig.vim'
@@ -21,6 +20,8 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/RestoreLastCursorPos.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/TagListConfig.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/ThemeAndSyntaxHighlighting.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/YouCompleteMe.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/Backup.vim'
 
 " Setup Pathogen to manage your plugins
 " mkdir -p ~/.vim/autoload ~/.vim/bundle
