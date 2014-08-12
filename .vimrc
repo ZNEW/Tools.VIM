@@ -73,6 +73,3 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " http://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally
 
-set nobackup
-set nowritebackup
-set noswapfile

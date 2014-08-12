@@ -1,3 +1,12 @@
+https://github.com/Valloric/YouCompleteMe/wiki/Windows-Installation-Guide
+VIM: vim-7.4.193-python-2.7-python-3.3-ruby-2.0.0-lua-5.2-windows-x64.zip
+Python:  python-2.7.8.amd64.msi in C:\Python27
+Libpython (for use with Mingw64: libpython-1.0.win-amd64-py2.7.exe
+LLVM: llvm-3.4-mingw-w64-4.8.1-x64-posix-sjlj.zip in C:\LLVM
+CMAKE: cmake-3.0.0-win32-x86.exe in path
+Mingw64 x86_64-4.8.2-release-posix-sjlj-rt_v3-rev4.7z in C:\mingw64
+CTAGS: ctags58.zip in path
+
 cd %HOMEPATH%
 mkdir vimfiles
 cd vimfiles
@@ -6,9 +15,14 @@ git remote add origin http://github.com/ZNEW/Tools.VIM.git
 git fetch origin
 git pull origin master
 git submodule update --init --recursive
+
+
+Path=C:\Python27\;C:\MinGW64\bin;E:\APP32\ENV\ctags58;E:\DEV.Tools\CMake\3.0.0\bin;C:\Program Files (x86)\MSBuild\12.0\Bin
+
 mkdir ycmd.build
 cd ycmd.build
 cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\Zog\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
-cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\Zog\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\Zog\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp twice ?
 mingw32-make ycm_support_libs
+mingw32-make ycm_core not needed ?
 cp %HOMEPATH%\vimfiles\.vimrc %HOMEPATH%\_vimrc
