@@ -1,6 +1,20 @@
 
 map <F2> :echo 'Current time is ' . strftime('%c')<CR>
 
+" Edit {{{
+" Explanation needed
+
+" }}}
+"
+" Edit {{{
+" Explanation needed
+
+" }}}
+
+" Edit {{{
+" Explanation needed
+
+" }}}
 
 " Rebind <Leader> key
 " I like to have it here becuase it is easier to reach than the default and
@@ -45,7 +59,6 @@ map <Leader>m <esc>:tabnext<CR>
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
 
-
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect sevl lines of code here and
 " then press ``>`` several times.
@@ -61,8 +74,6 @@ map <leader>dj ]c
 map <leader>dk [c
 map <leader>du <esc>:diffupdate<CR>
 
-
-
 map <Tab>n <esc>:tabnew<CR>
 map <Tab>x <esc>:tabclose<CR>
 
@@ -70,9 +81,14 @@ map <Tab>x <esc>:tabclose<CR>
 nnoremap ` @a
 vnoremap ` :normal @a<CR>
 
-
-
 "" map <Leader>p i<Esc>ea()<Esc>
 "" map <Leader>c i<Esc>ea{}<Esc>
 
-"nnoremap <C-t> <C-]>
+nnoremap <C-t> <C-]>
+
+"en test
+
+" Truc {{{
+" Truc explanation
+
+" }}
