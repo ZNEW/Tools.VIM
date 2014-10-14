@@ -1,0 +1,41 @@
+if &cp || (exists('g:loaded_transparency_windows_vim') && g:loaded_transparency_windows_vim)
+    finish
+endif
+
+let g:loaded_transparency_windows_vim = 1
+
+if !has('gui_running')
+   " || (!has('win32') && !has('win64'))
+    finish
+endif
+
+"let s:dll = globpath(&rtp, 'vimtweak.dll')
+
+let g:FocusedWindowTransparency = 5
+let g:UnfocusedWindowTransparency = 50
+
+if has('win32') || has('win64')
+    let s:dll = globpath('~/bin', 'vimtweak.dll')
+    if len(s:dll) == 0
+        finish
+    endif
+endif
+
+function! s:Transparency(v)
+    if has('gui_running')
+        if (has('win32') || has('win64'))
+            call libcallnr(s:dll, 'SetAlpha', 255-(5+2*a:v))
+        else
+            :exec ':set transparency=' . a:v
+        endif
+    endif
+endfunction
+
+augroup transparency_windows
+    autocmd!
+    autocmd FocusGained * call s:Transparency(g:FocusedWindowTransparency)
+    autocmd FocusLost * call s:Transparency(g:UnfocusedWindowTransparency)
+augroup END
+
+call s:Transparency(g:FocusedWindowTransparency)
+
