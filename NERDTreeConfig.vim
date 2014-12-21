@@ -22,7 +22,7 @@
     let NERDTreeShowHidden=1
 
     " Taille de l'explorateur
-    let NERDTreeWinSize=30
+    let NERDTreeWinSize=60
 " }}}1
 
 let g:NERDTreeWinPos = "right"
