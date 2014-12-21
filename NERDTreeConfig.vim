@@ -22,10 +22,11 @@
     let NERDTreeShowHidden=1
 
     " Taille de l'explorateur
-    let NERDTreeWinSize=60
+    let NERDTreeWinSize=30
 " }}}1
 
 let g:NERDTreeWinPos = "right"
+
 
 "let NERDTreeShowHidden=1
 " Start NERDTree
@@ -33,4 +34,12 @@ let g:NERDTreeWinPos = "right"
 
 " Go to previous (last accessed) window.
 "autocmd VimEnter * wincmd p
+
+
+"NERDTree update
+function! UpdateNerdTree()
+    NERDTreeFind
+    wincmd p
+endfunction
+
 

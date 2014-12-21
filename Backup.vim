@@ -12,6 +12,4 @@ set noswapfile
 
 set noundofile
 
-au Focuslost * :w " Save when focus is lost
-
 

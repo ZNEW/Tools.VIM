@@ -47,7 +47,7 @@
     let Tlist_Use_Right_Window = 1
 
     " Largeur du panneau
-    let Tlist_WinWidth = 40
+    let Tlist_WinWidth = 60
 
     " Le contenu du panneau ne représente que le fichier courant
     let Tlist_Show_One_File = 1
@@ -59,11 +59,6 @@
     let Tlist_File_Fold_Auto_Close = 1
 
     "let Tlist_Use_SingleClick = 1
-
-    " F8 : [PLUGIN] TList
-    map <silent> <F8> :execute ToggleTList()<cr>
-    imap <F8> <Esc><F8>
-    vmap <F8> <Esc><F8>
 
     " Afficher / Cacher TList
     let g:tlistopened=0
@@ -92,3 +87,4 @@
 
 
 " }}}1
+

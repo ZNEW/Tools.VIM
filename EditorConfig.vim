@@ -5,16 +5,16 @@
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-filetype off
-filetype plugin indent on
 
 " Real programmers don't use TABs but spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set shiftround
 set expandtab
 
+"Search
+set incsearch		" do incremental searching
 " Make search case insensitive
 set hlsearch
 set incsearch
@@ -26,7 +26,6 @@ set smartcase
 set nobackup
 set nowritebackup
 set noswapfile
-"set nohidden " Unload hidden
 
 set nocompatible
 "set nocp
@@ -35,12 +34,14 @@ set nocompatible
 set history=700
 set undolevels=700
 
-set wrap " Enable wrapping
-
 set ttyfast
 set backspace=indent,eol,start
 set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+  if(has('win32') || has('win64'))
+      set listchars=tab:\|\ ,eol:¬,extends:\|,precedes:\|
+  else
+      set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+  endif
 set matchtime=3
 set showbreak=↪
 set splitbelow
@@ -53,6 +54,7 @@ set linebreak
 " Note, perl automatically sets foldmethod in the syntax file
 autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zRt
+autocmd BufNewFile,BufRead *.xml setf xml
 
 "Disable beeping & enable visualbell
 set noeb vb t_vb= "set noerrorbells visualbell t_vb=
@@ -62,10 +64,47 @@ set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 
 if has('gui_running')
-  set guifont=Inconsolata_for_Powerline:h12    " set fonts for gui vim
+  if(has('win32') || has('win64'))
+      set guifont=Inconsolata_for_Powerline:h11    " set fonts for gui vim
+  else
+      set guifont=Inconsolata_for_Powerline:h12
+  endif
   "set transparency=10        " set transparent window
   "call libcallnr("vimtweak.dll", "SetAlpha", 210) 
 "  set guioptions=egmrt  " hide the gui menubar
 endif
 
 let g:airline_powerline_fonts=1
+
+set wrap " Enable wrapping
+set showcmd		" display incomplete commands
+
+autocmd TabEnter * call UpdateNerdTree()
+
+"Tab & Syntax update
+let g:mySyntax = 0
+
+function! UpdateTab()
+    call UpdateNerdTree()
+    if g:mySyntax == 0
+        :syntax off<CR>
+    endif
+    if g:mySyntax == 1
+        :syntax on<CR>
+    endif
+    let g:mySyntax = g:mySyntax + 1
+    if g:mySyntax >= 2
+        let g:mySyntax = 0
+    endif
+endfunction
+
+function! g:EditInNewTab(v)
+    if has('gui_running')
+        if (has('win32') || has('win64'))
+            :tabnew<CR>
+            :exec ':e! ' . a:v
+        else
+            :echo "Pouet"<CR>
+        endif
+    endif
+endfunction

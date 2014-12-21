@@ -30,9 +30,9 @@ autocmd BufRead,BufNewFile *.py syntax on
 
 set laststatus=2
 
-if ( has('win32') || has('win64') )
-    set guifont=Courier_New:h10:cANSI
-endif
+"if ( has('win32') || has('win64') )
+"    set guifont=Courier_New:h10:cANSI
+"endif
 
 if has("gui_running")
   " GUI is running or is about to start.
@@ -49,4 +49,5 @@ else
     set columns=100
   endif
 endif
+
 

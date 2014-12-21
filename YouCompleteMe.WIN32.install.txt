@@ -1,0 +1,92 @@
+https://github.com/Valloric/YouCompleteMe/wiki/Windows-Installation-Guide
+VIM: vim-7.4.193-python-2.7-python-3.3-ruby-2.0.0-lua-5.2-windows-x64.zip
+Python:  python-2.7.8.amd64.msi in C:\Python27
+Libpython (for use with Mingw64: libpython-1.0.win-amd64-py2.7.exe
+LLVM: llvm-3.4-mingw-w64-4.8.1-x64-posix-sjlj.zip in C:\LLVM
+CMAKE: cmake-3.0.0-win32-x86.exe in path
+Mingw64 x86_64-4.8.2-release-posix-sjlj-rt_v3-rev4.7z in C:\mingw64
+CTAGS: ctags58.zip in path
+
+cd %HOMEPATH%
+mkdir vimfiles
+cd vimfiles
+git init
+git remote add origin http://github.com/ZNEW/Tools.VIM.git
+git fetch origin
+git pull origin master
+git submodule update --init --recursive
+
+
+Path=C:\Python27\;C:\MinGW32\bin;C:\ctags58;C:\Program Files\CMake\bin;C:\Program Files (x86)\MSBuild\12.0\Bin
+                     -------
+mkdir ycmd.build
+cd ycmd.build
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\Zog\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\Zog\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp twice ?
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\F8296572\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
+mingw32-make ycm_support_libs
+mingw32-make ycm_core not needed ?
+cp %HOMEPATH%\vimfiles\.vimrc %HOMEPATH%\_vimrc
+rename Renamed.msvcr90.dll in C:\Program Files\CMake\bin
+
+
+mkdir ycmd.build
+cd ycmd.buil
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\F8296572\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
+mingw32-make ycm_support_libs
+
+pb: Omnisharp
+
+https://github.com/Valloric/YouCompleteMe/issues/876
+https://github.com/metatheos/YouCompleteMe/commit/583f97c1ec0d334ffd7bfb7f165e57c851be53ce
+
+youcompleteme.py
+
+  def _ServerCleanup( self ):
+    if self.IsServerAlive():
+#      self._server_popen.terminate()
+      try:
+        BaseRequest.PostDataToHandler( BuildRequestData(), 'shutdown' )
+        BaseRequest.PostDataToHandler( BuildRequestData(), 'shutdown' ) 
+        BaseRequest.PostDataToHandler( BuildRequestData(), 'shutdown' )
+      except:
+        self._server_popen.terminate() # maybe should do this to make sure server goes down?
+        pass
+
+handlers.py
+
+import asyncore
+
+@app.post( '/shutdown' )
+def Shutdown():
+  LOGGER.info( 'Received shutdown request' )
+  asyncore.close_all() #dirty: this relies on the implementation of waitress
+
+vimsupport.py
+
+
+def GetBufferNumberForFilename( filename, open_file_if_needed = True ):
+  return GetIntValue( u"bufnr('{0}', {1})".format(
+#      EscapeForVim( os.path.realpath( filename ) ),
+      ToUtf8IfNeeded (EscapeForVim( os.path.realpath( filename ) ) ),
+      int( open_file_if_needed ) ) )
+
+-------------------------------------------------------------------------------
+
+Hi, I'm really new to VIM (win32) and the famous YCM :) and I'm having troubles with Omnisharp too (UnicodeEncodeError: 'ascii' codec... UFT-8 in comments).
+I tried to convert buffer to ASCII in _GetResponse (line 393 in https://github.com/Valloric/ycmd/blob/master/ycmd/completers/cs/cs_completer.py) and well, no more UnicodeEncodeError (there may be side effects...)
+
+  def _GetResponse( self, handler, parameters = {}, silent = False ):
+    """ Handle communication with server """
+    # TODO: Replace usage of urllib with Requests
+    target = urlparse.urljoin( self._ServerLocation(), handler )
+
+    # Here it is :
+    parameters['buffer'] = parameters['buffer'].encode('ascii','replace')
+
+    parameters = urllib.urlencode( parameters )
+    response = urllib2.urlopen( target, parameters )
+    return json.loads( response.read() )
+
+Hope it can help.
+-------------------------------------------------------------------------------

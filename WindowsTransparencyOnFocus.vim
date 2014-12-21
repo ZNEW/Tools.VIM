@@ -11,8 +11,8 @@ endif
 
 "let s:dll = globpath(&rtp, 'vimtweak.dll')
 
-let g:FocusedWindowTransparency = 5
-let g:UnfocusedWindowTransparency = 50
+let g:FocusedWindowTransparency = 2
+let g:UnfocusedWindowTransparency = 20
 
 if has('win32') || has('win64')
     let s:dll = globpath('~/bin', 'vimtweak.dll')
@@ -31,11 +31,31 @@ function! s:Transparency(v)
     endif
 endfunction
 
+
+function! Test()
+    if(expand("%")=="")
+        echo "titi"
+    endif
+
+   if (&buftype=="") && (expand("%:r") > "") && (&readonly==0)
+"      write
+      echo "toto"
+   endif
+endfunction
+
+function! Test2()
+    echo "titi"
+endfunction
+
 augroup transparency_windows
+""    autocmd BufLeave,FocusLost * silent! wall
     autocmd!
     autocmd FocusGained * call s:Transparency(g:FocusedWindowTransparency)
     autocmd FocusLost * call s:Transparency(g:UnfocusedWindowTransparency)
+"    autocmd BufLeave,FocusLost * bufdo! call Test()
+    autocmd BufNewFile call Test2()
 augroup END
 
 call s:Transparency(g:FocusedWindowTransparency)
+
 
