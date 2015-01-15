@@ -99,12 +99,8 @@ function! UpdateTab()
 endfunction
 
 function! g:EditInNewTab(v)
-    if has('gui_running')
-        if (has('win32') || has('win64'))
-            :tabnew<CR>
-            :exec ':e! ' . a:v
-        else
-            :echo "Pouet"<CR>
-        endif
-    endif
+  if has('gui_running')
+    :tabnew<CR>
+    :exec ':e! ' . a:v
+  endif
 endfunction

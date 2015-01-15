@@ -56,8 +56,14 @@ vmap <F8> <Esc><F8>
 " Leader key
 let mapleader = ","
 
+
 " leader + key
-nnoremap <leader>e :call g:EditInNewTab('c:\users\F8296572\_vimrc')<CR>
+if (has('win32') || has('win64'))
+  nnoremap <leader>e :call g:EditInNewTab('c:yusers\F8296572\_vimrc')<CR>
+else
+  nnoremap <leader>e :call g:EditInNewTab('~\/.vimrc')<CR>
+endif
+
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 noremap <Leader>q :quit<CR>
