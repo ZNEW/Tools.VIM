@@ -1,0 +1,8 @@
+check projects local vimrc
+
+Add MMB for Navigation/class
+
+
+
+
+

@@ -1,0 +1,380 @@
+vimrc local ???
+
+
+help
+-------------------------------------------------------------------------------
+:help w
+:help c_<Tab>
+:help user-manual
+
+General
+-------------------------------------------------------------------------------
+.                   Reproduire la derniere action
+
+Command motion arguments
+--------------------------------------------------------------------------------
+a- all
+i - in
+t - 'til
+
+
+Edition
+-------------------------------------------------------------------------------
+a                   Ajouter
+A                   Ajouter a la fin de la ligne
+i                   Inserer
+I                   Inséré en début de ligne (devant le premier mot)
+o                   Ouvrir une ligne en dessous et passer en mode insertion
+O                   Idem pour une ligne au dessus
+P/p                 Coller avant / apres
+r caractere         Remplacer le caractere
+R texte             Passe en mode remplacement
+ce                  Remplacer la fin du mot
+c nombre direction  Remplacer n caracter dans la direction (hl)
+cip                 Remplacer le contenu des données entre parenthèses
+<c-q>jjlIazert<esc> Insert azert sur 3 ligne à la verticale
+d(w, $, d, e)       Suppression du mot, fin de ligne, ligne, fin du mot courant
+d2w                 Effacer 2 mots
+gg=G                Réindente tout le buffer
+diw                 Suppression du mot sous le curseur sans espace
+daw                 Suppression du mot sous le curseur avec espace le suivant
+u/U                 Lowercase/Upercase
+gU(w, $, d, e)      Passer en majuscule
+:help insert-index  Modes d'insertion
+
+Display
+--------------------------------------------------------------------------------
+zo              Open one fold under the cursor.  When a count is given, that
+                 many folds deep will be opened.  In Visual mode one level of
+                 folds is opened for all lines in the selected area.
+
+zc              Close one fold under the cursor.  When a count is given, that
+                 many folds deep are closed.  In Visual mode one level of folds
+                 is closed for all lines in the selected area.
+                 'foldenable' will be set.
+zR              Open all folds.  This sets 'foldlevel' to highest fold level.
+
+zM              Close all folds: set 'foldlevel' to 0.
+                 'foldenable' will be set.
+
+Completion
+-------------------------------------------------------------------------------
+<C-n>               Completion avec le mot le plus récent
+<C-x><C-o>          Competion omni
+<C-x><C-f>          Competion des chemins de fichiers
+:help c_CTRL-D : command line completion
+
+Navigation
+-------------------------------------------------------------------------------
+0                   Debut de ligne
+$                   Fin de ligne
+nombre commande     Executer la commande le nombre de fois
+e                   Aller à la fin du mot courant
+w                   Passer au Mot suivant
+W                   Passer au MOT suivant
+G                   Fin du fichier
+gg                  Debut du fichier
+fc                  Prochaine instance du caratere c sur la ligne
+Fc                  Instance précédente du caractere c sur la ligne
+tc                  Position pécédant l'Instance suivante du caractere c sur la ligne
+55gg                Se déplacer à la ligne 55
+:+3                 Descendre de 3 lignes
+<C+f>               Page suivante
+<C+b>               Page précédente
+<C-hjkl>            Navigation entre zones
+^E - scroll the window down
+^Y - scroll the window up
+^F - scroll down one page
+^B - scroll up one page
+H - move cursor to the top of the window
+M - move cursor to the middle of the window
+L - move cursor to the bottom of the window
+
+Sélection
+-------------------------------------------------------------------------------
+V                   Sélection de toute la ligne
+<C-Q>               Selection de blocs
+1v                  Sélection de bloc de meme taille (pouvant etre agrandi)
+2v                  Sélection double
+gv                  Restitue la derniere sélection
+vfc                 Selection de la position actuelle jusqu'au premier c
+viw                 Selection du mot sous le curseur sans espace
+vaw                 Selection du mot sous le curseur avec espace le suivant
+vip                 Selection du paragraphe sans retour à la ligne
+vap                 Selection du paragraphe avec retour à la ligne
+vis                 Selection du phrase sans le point et le point
+vas                 Selection du phrase avec le point et le point
+vit                 Selection du contenu des données dans le tag
+vat                 Selection du contenu des données avec le tag
+vi( ou viB          Selection du contenu des données dans les parenthèses
+va( ou vaB          Selection du contenu des données avec les parenthèses
+vi{ ou vib          Selection du contenu des données dans les accolades
+va{ ou vab          Selection du contenu des données avec les accolades
+vi[                 Selection du contenu des données dans les crochets
+va[                 Selection du contenu des données avec les crochets
+vi"                 Selection du contenu des données dans les guillemets
+va"                 Selection du contenu des données avec les guillemets
+
+Undo (u) / Redo <C-R> / recup Ligne (U)
+-------------------------------------------------------------------------------
+
+Aide
+-------------------------------------------------------------------------------
+ZZ                  Sortie de l'aide
+
+Recherche
+-------------------------------------------------------------------------------
+/                   Rechercher apres
+?                   Rechercher avant
+n                   Suivant
+N                   Précédent
+%                   Correspondance entre (), [] ou {}
+£                   recherche le mot (complet) sur le curseur
+*                   Recherche de la prochaine occurence du mot sous le curseur
+grep ???????????
+
+Copier
+-------------------------------------------------------------------------------
+yaw                 copie du mot sous le cureur (sans espace)
+
+
+Remplacer
+-------------------------------------------------------------------------------
+:s/ancient/nouveau  Remplace 1 instance
+:%s/foo/bar/g
+    Find each occurrence of 'foo' (in all lines), and replace it with 'bar'. 
+
+:s/foo/bar/g
+    Find each occurrence of 'foo' (in the current line only), and replace it with 'bar'. 
+
+:%s/foo/bar/gc
+    Change each 'foo' to 'bar', but ask for confirmation first. 
+
+:%s/\<foo\>/bar/gc
+    Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation. 
+
+:%s/foo/bar/gci
+    Change each 'foo' (case insensitive) to 'bar'; ask for confirmation. 
+    This may be wanted after using :set noignorecase to make searches case sensitive (the default). 
+
+:%s/foo/bar/gcI
+    Change each 'foo' (case sensitive) to 'bar'; ask for confirmation. 
+    This may be wanted after using :set ignorecase to make searches case insensitive.
+
+D / C - delete/change until end of line
+
+Configuration
+-------------------------------------------------------------------------------
+:set ic             Non prise en compre de la case dans les recherches
+:set noic           Prise en compte de la case
+hls                 Mise en surbrillance des mots touvés
+is                  Deplacer automatiquement le curseur à la première instance 
+                    trouvée
+
+Variable
+-------------------------------------------------------------------------------
+|buffer-variable|    b:	  Local to the current buffer.
+|window-variable|    w:	  Local to the current window.
+|tabpage-variable|   tr	  Local to the current tab page.
+|global-variable|    g:	  Global.
+|local-variable|     l:	  Local to a function.
+|script-variable|    s:	  Local to a |:source|'ed Vim script.
+|function-argument|  a:	  Function argument (only inside a function).
+|vim-variable|	     v:	  Global, predefined by Vim.
+
+Navigation entre fichiers
+-------------------------------------------------------------------------------
+g<LeftMouse> ou <LeftMouse><LeftMouse>
+CTRL-T, CTRL-O, g<RightMouse>, or <C-RightMouse>
+:jumps              liste des derniers fichiers edités
+XY<c-o>             ouvre le fichier édité en position XY
+
+Navigation entre fenetres (spliées)
+-------------------------------------------------------------------------------
+<C-W><C-W>          Passer d'une fenetre à l'autre
+<C-tab>             Navigation entre les fenetres
+
+Executer des commandes
+-------------------------------------------------------------------------------
+:r !ls              Insert la sortie de la commande ls
+:!md ...        create a folder
+
+Macro
+-------------------------------------------------------------------------------
+q{0-9a-zA-Z"}   recording
+q               stop recording
+@{0-9a-z".=*}   execute
+
+qaI,<esc>jq         Enregistre une macro inserant une virgule et descend d'une
+                    ligne
+Correct a macro
+:put a
+"add
+
+Indentation
+-------------------------------------------------------------------------------
+>>   Indent line by shiftwidth spaces
+<<   De-indent line by shiftwidth spaces
+5>>  Indent 5 lines
+5==  Re-indent 5 lines
+
+>%   Increase indent of a braced or bracketed block (place cursor on brace first)
+=%   Reindent a braced or bracketed block (cursor on brace)
+<%   Decrease indent of a braced or bracketed block (cursor on brace)
+]p   Paste text, aligning indentation with surroundings
+
+=i{  Re-indent the 'inner block', i.e. the contents of the block
+=a{  Re-indent 'a block', i.e. block and containing braces
+=2a{ Re-indent '2 blocks', i.e. this block and containing block
+
+>i{  Increase inner block indent
+<i{  Decrease inner block indent
+Fold                http://vim.wikia.com/wiki/Folding
+                    zc (close), zo (open), and za (toggle) 
+                    zC, zO and zA are similar, but operate on all folding levels
+
+vim diff ----------------------------------------------------------------------
+Keyboard Shortcuts:
+
+do              Get changes from other window into the current window.
+dp              Put the changes from current window into the other window.
+,dj ou ]c       Jump to the next change.
+,dk ou [c       Jump to the previous change.
+,du             Update Diff display
+<C-W><C-W>      Switch to the other split window.
+
+
+Voir les messages de sortie
+-------------------------------------------------------------------------------
+:messages       affiche l'historique des message
+
+
+Utile
+--------------------------------------------------------------------------------
+Insert current filename
+"%p
+<C-R>=expand("%:r")
+
+:inoremap \fn <C-R>=expand("%:t:r")<CR>
+
+To keep the extension use:
+:inoremap \fn <C-R>=expand("%:t")<CR>
+
+To insert the absolute path of the directory the file is in use:
+:inoremap \fn <C-R>=expand("%:p:h")<CR>
+
+To insert the relative path of the directory the file is in use:
+:inoremap \fn <C-R>=expand("%:h")<CR>
+
+
+
+
+
+
+
+
+A regarder
+-------------------------------------------------------------------------------
+regarder les option de base vimrc de steev Losh
+:h cursor-motions
+vim-surround.vim, t_command, command-t
+steeve loch : learning vim the hard way
+Ben Orenstein / github r00k vimrc
+refactoring plugin : remplacement
+claviers kinesys ?
+footpedals for automated commands ?
+Vim mail list archive
+grep
+quickfix window
+sven google vimrc
+detect inefficiency frequently
+the 7 habits of highly effective people
+gdb agide.org
+mksession
+video.google.com
+ajouter des commandes systeme en fin de vimrc ?
+cf. Vim_plugins_hd720
+CTRL-P       Recherche rapide de fichiers (fuzzy matching)
+eclim / intelisense + signature
+Quickfix
+mapper HJKL en debut/fin de ligne/fichier
+utilisation des registres
+http://vimcasts.com
+http://linuxlefty.com/tools/favorite-vim-plugins-vi-gvim.html
+http://vimawesome.com/
+http://vim-adventures.com/
+http://vim.spf13.com
+https://www.youtube.com/watch?v=5r6yzFEXajQ
+vimscript
+    https://youtu.be/SkdrYWhh-8s?t=1344
+
+
+plugins installés
+-------------------------------------------------------------------------------
+ctags.vim----------------------------------------------------------------------
+:ta main            Aller a la fonction main dans le fichier
+<C-]> ou <C-t>      devrait aller à la definition                                ne fonctionne pas (trouver une autre touche)
+
+clang_complete-----------------------------------------------------------------
+tab         Faire apparaitre la liste des choix
+pour les appels de fonction, la signature apparait en haut de l'écran dans une
+fenetre separée
+            si des arguments sont nécessaires, en jouant avec tab et echap, on
+            passe successivement sur chacun pour les remplacer
+
+
+ctrlp.vim----------------------------------------------------------------------
+
+
+nerdtree-----------------------------------------------------------------------
+m           liste des commandes
+
+OmniCppComplete
+
+vim-snipmate-------------------------------------------------------------------
+tab/<S-tab>     naviguer entre les zones et paramètre
+
+supertab
+
+taglist.vim
+
+tlib_vim
+
+vim-addon-mw-utils
+
+vim-airline
+
+vim-nerdtree-tabs
+
+vim-snipmate
+
+vim-snippets
+
+vim-surround ------------------------------------------------------------------
+w(              entourer le mot de () avec espaces --> idem avec {, [
+w)              entourer le mot de () sans espaces --> idem avec }, ]
+
+fugitiv
+--------------------------------------------------------------------------------
+:Gblame     Voir les modifications pour chaque ligne
+o           diff+commit message / line
+:Glog       affichage du log + chargement de toutes les versions d'un fichier
+]q          afficher la version précédente
+:Gedit      retour au head
+:Gdiff      affichage de diff cote a cote
+:Gwrite     git add
+:Gcommit    ouverture du message de commit
+    :wq     fermeture de message de commit + git Commit
+????        Git status
+    -       stage file on line under cursor
+
+
+visual_studio.vim
+
+
+brew install tmux
+
+other :
+    yss
+
+

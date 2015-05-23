@@ -7,7 +7,7 @@ map <F2> :echo 'Current time is ' . strftime('%c')<CR>
 nnoremap D d$
 
 "Begin of line
-nnoremap H ^
+nnoremap H ^i
 
 "End of file
 "nnoremap J gg
@@ -20,7 +20,7 @@ nnoremap K 10k
 vnoremap K 10k
 
 "End of line
-nnoremap L g_
+nnoremap L g_A
 
 "centered search
 nnoremap n nzzzv
@@ -45,30 +45,20 @@ nnoremap * *<c-o>
 vnoremap <BS> d
 
 map <F5> :call UpdateTab()<CR>
-" F8 : [PLUGIN] TList
-map <silent> <F8> :execute ToggleTList()<cr>
-imap <F8> <Esc><F8>
-vmap <F8> <Esc><F8>
-
 " }}}
 
 " Leader mapping {{{
 " Leader key
 let mapleader = ","
 
-
 " leader + key
-if (has('win32') || has('win64'))
-  nnoremap <leader>e :call g:EditInNewTab('c:yusers\F8296572\_vimrc')<CR>
-else
-  nnoremap <leader>e :call g:EditInNewTab('~\/.vimrc')<CR>
-endif
-
+nnoremap <leader>e :call g:EditInNewTab('c:\users\F8296572\_vimrc')<CR>
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 noremap <Leader>q :quit<CR>
 noremap <Leader>Q :qa!<CR>
-nnoremap <leader>s :UltiSnipsEdit<CR>
+nnoremap <leader>scs :call g:EditInNewTab('c:\users\F8296572\vimfiles\snippets\cs.snippets')<CR>
+nnoremap <leader>uscs :call g:EditInNewTab('c:\users\F8296572\vimfiles\UltiSnips\cs.snippets')<CR>
 
 " leader + keys
 " Diff shortcuts
@@ -83,23 +73,31 @@ map <Tab>x <esc>:tabclose<CR>
 " }}}
 
 " CTRL - key {{{
-map <c-h> <c-w>h
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
+"map <c-h> <c-w>h
+"map <c-j> <c-w>j
+"map <c-k> <c-w>k
+"map <c-l> <c-w>l
 nnoremap <C-t> <C-]>
 " }}}
 
 " CTRL - key + CTRL - key {{{
 " buffer switch
+
+imap <C-b><C-l> <esc>:bn<CR>
+map <C-b><C-l> <esc>:bn<CR>
+
 imap <C-b><C-b> <esc>:bp<CR>
 map <C-b><C-b> <esc>:bp<CR>
 
+imap <C-b><C-h> <esc>:bp<CR>
+map <C-b><C-h> <esc>:bp<CR>
+
 map <C-b><C-c> <Esc>:exec ":bp\|bd #"<CR>
-imap <C-c><C-p> <Esc>:call CreateProperty()<CR>a
-imap <C-c><C-p><C-s> <Esc>:call CreateProperty("string")<CR>a
-imap <C-c><C-p><C-i> <Esc>:call CreateProperty("int")<CR>a
-vmap <C-e><C-m> :call ExtractMethod()<CR>
+
+imap <C-r><C-c><C-p> <Esc>:call CreateProperty()<CR>a
+imap <C-r><C-c><C-p><C-s> <Esc>:call CreateProperty("string")<CR>a
+imap <C-r><C-c><C-p><C-i> <Esc>:call CreateProperty("int")<CR>a
+vmap <C-r><C-e><C-m> :call ExtractMethod()<CR>
 
 " Move in insert mode
 imap <C-h><C-h> <left>

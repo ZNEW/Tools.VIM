@@ -1,0 +1,162 @@
+snippet xmlutf8 "XML UTF-8 declaration" b
+<?xml version="1.0" encoding="utf-8"?>
+$0
+endsnippet
+
+snippet tag "Simple tag" b
+<${1:tag}>
+	${2:content}
+</${1/([\w:._-]+).*/$1/}>
+endsnippet
+
+snippet itag "Inline tag" b
+<${1:tag}>${2:content}</${1/([\w:._-]+).*/$1/}>
+endsnippet
+
+snippet walls "PREIFC walls declaration" b
+<Fronts onemeterworldvalue="1.0">
+	$0
+</Fronts>
+endsnippet
+
+snippet nwall "North wall declaration" b
+<Front>
+	<PlaneEq x="0" y="1" z="0" w="1" />
+	<Polyline meshfilename="Fake.obj">
+		<Point x="${1:0.00}" y="${2:0.00}" z="0.0" />
+		<Point x="${3:0.00}" y="$2" z="0.0" />
+		<Point x="$3" y="$2" z="${4:0.00}" />
+		<Point x="$1" y="$2" z="$4" />
+	</Polyline>
+	$0
+	<Singularities />
+</Front>
+endsnippet
+
+snippet ewall "East wall declaration" b
+<Front>
+	<PlaneEq x="1" y="0" z="0" w="1" />
+	<Polyline meshfilename="Fake.obj">
+		<Point x="${1:0.00}" y="${2:0.00}" z="0.0" />
+		<Point x="$1" y="$2" z="${3:0.00}" />
+		<Point x="$1" y="${4:0.00}" z="$3" />
+		<Point x="$1" y="$4" z="$2" />
+	</Polyline>
+	$0
+	<Singularities />
+</Front>
+endsnippet
+
+
+snippet sewall "South East wall declaration" b
+<Front>
+	<PlaneEq x="-0.7071067811" y="-0.7071067811"z="0" w="1" />
+	<!-- size ${1:0.00} * ${2:0.00}-->
+	<Polyline meshfilename="Fake.obj">
+		<Point x="`!p
+import math
+snip.rv = math.flt[1]*math.sqrt(2.0)/2.0`" y="`!p snip.rv = t[2]*2`" z="0.0" />
+	</Polyline>
+	$0
+	<Singularities />
+</Front>
+endsnippet
+
+snippet swall "South wall declaration" b
+<Front>
+	<PlaneEq x="0" y="-1" z="0" w="1" />
+	<Polyline meshfilename="Fake.obj">
+		<Point x="${1:0.00}" y="${2:0.00}" z="0.0" />
+		<Point x="${3:0.00}" y="$2" z="0.0" />
+		<Point x="$3" y="$2" z="${4:0.00}" />
+		<Point x="$1" y="$2" z="$4" />
+	</Polyline>
+	$0
+	<Singularities />
+</Front>
+endsnippet
+
+snippet wwall "West wall declaration" b
+<Front>
+	<PlaneEq x="-1" y="0" z="0" w="1" />
+	<Polyline meshfilename="Fake.obj">
+		<Point x="${1:0.00}" y="${2:0.00}" z="0.0" />
+		<Point x="$1" y="$2" z="${3:0.00}" />
+		<Point x="$1" y="${4:0.00}" z="$3" />
+		<Point x="$1" y="$4" z="$2" />
+	</Polyline>
+	$0
+	<Singularities />
+</Front>
+endsnippet
+
+snippet wds "Wall windows declaration" b
+<Windows>
+	$0
+</Windows>
+endsnippet
+
+snippet nowd "No windows declaration" b
+<Windows />
+endsnippet
+
+snippet nwin "North window declaration" b
+<Window>
+	<Point x="$1" y="${2:0.00}" z="$3" />
+	<Point x="$4" y="$2" z="$5" />
+</Window>
+endsnippet
+
+snippet swin "South window declaration" b
+<Window>
+	<Point x="$1" y="${2:0.00}" z="$3" />
+	<Point x="$4" y="$2" z="$5" />
+</Window>
+endsnippet
+
+snippet ewin "East window declaration" b
+<Window>
+	<Point x="${1:0.00}" y="$2}" z="$3" />
+	<Point x="$1" y="$4" z="$5" />
+</Window>
+endsnippet
+
+snippet wwin "West window declaration" b
+<Window>
+	<Point x="${1:0.00}" y="$2}" z="$3" />
+	<Point x="$1" y="$4" z="$5" />
+</Window>
+endsnippet
+
+
+snippet ndoor "North door declaration" b
+<Window>
+	<Point x="$1" y="${2:0.00}" z="0.00" />
+	<Point x="$3" y="$2" z="$4" />
+</Window>
+endsnippet
+
+snippet sdoor "South door declaration" b
+<Window>
+	<Point x="$1" y="${2:0.00}" z="0.00" />
+	<Point x="$3" y="$2" z="$4" />
+</Window>
+endsnippet
+
+snippet edoor "East door declaration" b
+<Window>
+	<Point x="${1:0.00}" y="$2}" z="0.00" />
+	<Point x="$1" y="$3" z="$4" />
+</Window>
+endsnippet
+
+snippet wdoor "West door declaration" b
+<Window>
+	<Point x="${1:0.00}" y="$2}" z="0.00" />
+	<Point x="$1" y="$3" z="$4" />
+</Window>
+endsnippet
+
+snippet wpt "Intermediate Wall Point declaration" b
+<Point x="${1:0.00}" y="${2:0.00}" z="${3:0.00}" />
+endsnippet

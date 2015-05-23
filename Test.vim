@@ -2,17 +2,90 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplSplitBelow=0
+let g:miniBufExplSplitToEdge = 0
+
+vmap \em :call ExtractMethod()<CR>
+
+function! ExtractMethod() range
+  let name = inputdialog("Name of new method:")
+  '<
+  exe "normal! O\<BS>private " . name ."()\<CR>{\<Esc>"
+  '>
+  exe "normal! oreturn ;\<CR>}\<Esc>k"
+  s/return/\/\/ return/ge
+  normal! j%
+  normal! kf(
+  exe "normal! yyPi// = \<Esc>wdwA;\<Esc>"
+  normal! ==
+  normal! j0w
+endfunction
+
+":set path=.,./**
+":exec ':set path+=' . expand('%:p:h') . '/**'
+
+function! UpdatePath() range
+  :exec ':set path+='.expand('%:p:h')."/**"
+endfunction
+
+:map <S-F3> :call UpdatePath()<CR>
+
+function! OpenCSharpFile() range
+  find <cword>.cs
+endfunction
+
+
+:map <F3> :call OpenCSharpFile()<CR>
+
+"function! OpenCSharpFileAndUpdatePath() range
+"  find <cword>.cs
+"  :exec ':set path+='.expand('%:p:h')."/**"
+"endfunction
+
+":map <S-F2> :call OpenCSharpFileAndUpdatePath()<CR>
+
+set nolazyredraw " don't redraw while executing macros
+set magic " Set magic on, for regex
+
+
+map <C-h> :call WinMove('h')<cr>
+map <C-j> :call WinMove('j')<cr>
+map <C-k> :call WinMove('k')<cr>
+map <C-l> :call WinMove('l')<cr>
+
+" Window movement shortcuts
+" move to the window in the direction shown, or create a new window
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+  endfunction
+
+
+
+
+
+
+
 " Refactoring functions call & shortcuts
-vmap <leader>em :call ExtractMethod()<CR>
-imap <C-c><C-p><C-s> <Esc>:call CreateProperty("string")<CR>a
-imap <C-c><C-p><C-i> <Esc>:call CreateProperty("int")<CR>a
+"vmap <leader>em :call ExtractMethod()<CR>
+"imap <C-c><C-p><C-s> <Esc>:call CreateProperty("string")<CR>a
+"imap <C-c><C-p><C-i> <Esc>:call CreateProperty("int")<CR>a
 
 "Create abstract class
-imap <C-c><C-a><C-c> <Esc>bipublic abstract class <Esc>A<CR>{<CR>public abstract void X();<CR>}<Esc>:?X<CR>0fXs
+"imap <C-c><C-a><C-c> <Esc>bipublic abstract class <Esc>A<CR>{<CR>public abstract void X();<CR>}<Esc>:?X<CR>0fXs
 "Create concrete class
-map <C-c><C-c><C-c> :silent! call ImplementAbstractClass()<CR>
+"map <C-c><C-c><C-c> :silent! call ImplementAbstractClass()<CR>
 
-imap <C-c><C-p> <Esc>:call CreateProperty()<CR>a
+"imap <C-c><C-p> <Esc>:call CreateProperty()<CR>a
 
 " Bind nohl
 " Removes highlight of your last search

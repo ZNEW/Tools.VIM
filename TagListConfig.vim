@@ -60,6 +60,11 @@
 
     "let Tlist_Use_SingleClick = 1
 
+    " F8 : [PLUGIN] TList
+    "map <silent> <F8> :execute ToggleTList()<cr>
+    "imap <F8> <Esc><F8>
+    "vmap <F8> <Esc><F8>
+
     " Afficher / Cacher TList
     let g:tlistopened=0
 

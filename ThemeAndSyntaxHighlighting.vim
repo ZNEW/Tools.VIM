@@ -12,10 +12,10 @@ color wombat256mod
 
 " Showing line numbers and length
 set number " show line numbers
-set tw=79 " width of document (used by gd)
+"set tw=79 " width of document (used by gd)
 set nowrap " don't automatically wrap on load
 set fo-=t " don't automatically wrap text when typing
-set colorcolumn=80
+set colorcolumn=120
 highlight ColorColumn ctermbg=233
 
 "mettre en évidence la ligne sur laquelle se trouve mon curseur
