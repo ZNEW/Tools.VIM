@@ -9,7 +9,7 @@
 au Focuslost * :wa
 
 "Maintien des proprtions lors du redimentionnement
-au VimResized * exe "normal! \<c-w>="
+"au VimResized * exe "normal! \<c-w>="
 
 " use Curent file path
 autocmd BufEnter * silent! lcd %:p:h

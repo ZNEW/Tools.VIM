@@ -19,10 +19,11 @@ git submodule update --init --recursive
 
 Path=C:\Python27\;C:\MinGW64\bin;E:\APP32\ENV\ctags58;E:\DEV.Tools\CMake\3.0.0\bin;C:\Program Files (x86)\MSBuild\12.0\Bin
 
+Path=C:\Python27\;X:\Tools\MinGW32\bin;C:\Tools\ctags58;X:\Tools\CMake\3.2.2\bin;C:\Program Files\MSBuild\12.0\Bin
 mkdir ycmd.build
 cd ycmd.build
-cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\Zog\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
-cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\Zog\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp twice ?
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . %USERPROFILE%\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . %USERPROFILE%\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
 mingw32-make ycm_support_libs
-mingw32-make ycm_core not needed ?
+mingw32-make ycm_core
 cp %HOMEPATH%\vimfiles\.vimrc %HOMEPATH%\_vimrc

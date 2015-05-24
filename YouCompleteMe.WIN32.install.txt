@@ -16,23 +16,24 @@ git fetch origin
 git pull origin master
 git submodule update --init --recursive
 
-
-Path=C:\Python27\;C:\MinGW32\bin;C:\ctags58;C:\Program Files\CMake\bin;C:\Program Files (x86)\MSBuild\12.0\Bin
+git submodule update --init --recursive
+Path=C:\Python27\;C:\MinGW32\bin;C:\ctags58;C:\Program Files\CMake\bin;C:\Program Files\MSBuild\12.0\Bin
                      -------
 mkdir ycmd.build
 cd ycmd.build
-cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\Zog\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
-cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\Zog\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp twice ?
-cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\F8296572\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . %USERPROFILE%\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . %USERPROFILE%\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
 mingw32-make ycm_support_libs
-mingw32-make ycm_core not needed ?
-cp %HOMEPATH%\vimfiles\.vimrc %HOMEPATH%\_vimrc
+mingw32-make ycm_core
+rem cp %HOMEPATH%\vimfiles\.vimrc %HOMEPATH%\_vimrc
 rename Renamed.msvcr90.dll in C:\Program Files\CMake\bin
+
+verifier le PATH vers dll mingw32
 
 
 mkdir ycmd.build
-cd ycmd.buil
-cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . C:\Users\F8296572\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
+cd ycmd.build
+cmake -G "MinGW Makefiles" -DPATH_TO_LLVM_ROOT=C:\LLVM . %USERPROFILE%\vimfiles\bundle\YouCompleteMe\third_party\ycmd\cpp
 mingw32-make ycm_support_libs
 
 pb: Omnisharp
