@@ -25,13 +25,15 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/EditorConfig.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Keyboard.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Mouse.vim'
-:exec ':source ' . g:UserVimFilesFolderName . '/NERDTreeConfig.vim'
-":exec ':source ' . g:UserVimFilesFolderName . '/quicksave.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/mswin.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/NERDTreeConfig.vim"'
+":exec ':source ' . g:UserVimFilesFolderName . '/Quicksave.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Refactoring.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/RestoreLastCursorPos.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Snips.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/TagListConfig.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/ThemeAndSyntaxHighlighting.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/UltiSnips.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/YouCompleteMe.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Backup.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/WindowsTransparencyOnFocus.vim'
@@ -45,3 +47,12 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 :set foldlevelstart=20
 
 let NERDTreeIgnore=['\.meta$', '\.*\~$']
+
+nnoremap <leader>e :call g:EditInNewTab( expand( '$HOME' ) . '/' . expand( g:UserVimrcFileName ) )<CR>
+map <leader>r :NERDTreeFind<cr>
+"map <C-o> :NERDTreeToggle %<CR>
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+
+
+

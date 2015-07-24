@@ -49,10 +49,10 @@ set nolazyredraw " don't redraw while executing macros
 set magic " Set magic on, for regex
 
 
-map <C-h> :call WinMove('h')<cr>
-map <C-j> :call WinMove('j')<cr>
-map <C-k> :call WinMove('k')<cr>
-map <C-l> :call WinMove('l')<cr>
+map <C-h><C-h> :call WinMove('h')<cr>
+map <C-j><C-j> :call WinMove('j')<cr>
+map <C-k><C-k> :call WinMove('k')<cr>
+map <C-l><C-l> :call WinMove('l')<cr>
 
 " Window movement shortcuts
 " move to the window in the direction shown, or create a new window

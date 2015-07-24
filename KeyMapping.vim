@@ -77,7 +77,11 @@ map <Tab>x <esc>:tabclose<CR>
 "map <c-j> <c-w>j
 "map <c-k> <c-w>k
 "map <c-l> <c-w>l
+
+" Navigate to / follot a tag (<c-i>)
 nnoremap <C-t> <C-]>
+" Trace back <C-o>
+
 " }}}
 
 " CTRL - key + CTRL - key {{{
