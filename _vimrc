@@ -42,6 +42,25 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 
 :exec ':source ' . g:UserVimFilesFolderName . '/Test.vim'
 
+let g:vim_php_refactoring_use_default_mapping = 0
+" Refactoring mapping {{{
+if g:vim_php_refactoring_use_default_mapping == 0
+    "nnoremap <unique> <Leader>prlv :call PhpRenameLocalVariable()<CR>
+    "nnoremap <unique> <Leader>prcv :call PhpRenameClassVariable()<CR>
+    nnoremap <unique> <Leader>prm :call PhpRenameMethod()<CR>
+    nnoremap <unique> <Leader>peu :call PhpExtractUse()<CR>
+    vnoremap <unique> <Leader>pec :call PhpExtractConst()<CR>
+    nnoremap <unique> <Leader>pep :call PhpExtractClassProperty()<CR>
+    vnoremap <unique> <Leader>pem :call PhpExtractMethod()<CR>
+    nnoremap <unique> <Leader>pnp :call PhpCreateProperty()<CR>
+    nnoremap <unique> <Leader>pdu :call PhpDetectUnusedUseStatements()<CR>
+    vnoremap <unique> <Leader>p== :call PhpAlignAssigns()<CR>
+    nnoremap <unique> <Leader>psg :call PhpCreateSettersAndGetters()<CR>
+    nnoremap <unique> <Leader>pda :call PhpDocAll()<CR>
+endif
+" }}}
+
+
 :set foldmethod=indent
 :set foldlevel=2
 :set foldlevelstart=20
@@ -53,6 +72,18 @@ map <leader>r :NERDTreeFind<cr>
 "map <C-o> :NERDTreeToggle %<CR>
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
+nnoremap <TAB><TAB> :tabn<cr>
 
+
+" list files, it's the key setting, if you haven't set,
+" you will get a blank buffer
+" let g:netrw_ssh_cmd  = "plink -T -ssh "
+let g:netrw_ssh_cmd  = "ssh -i \%USERPROFILE\%\\.ssh\\id_rsa"
+"let g:netrw_list_cmd = 'plink HOSTNAME ls -Fa '
+" if you haven't add putty directory in system path, you should
+" specify scp/sftp command.  For examples:
+"let g:netrw_sftp_cmd = 'PSFTP.exe '
+"let g:netrw_scp_cmd = 'PSCP.exe -q -batch '
+"let g:netrw_silent = 1
 
 
