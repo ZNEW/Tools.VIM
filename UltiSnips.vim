@@ -1,13 +1,22 @@
 
 " Snippets variables
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
-:exec ':set runtimepath+=' . expand('$HOME') .  "\\vimfiles\\Snippets"
+
 let g:snips_author='Frederic ACHARD'
 let g:author='Frederic ACHARD'
 let g:snips_email='frederic.achard@saint-gobain.com'
 let g:email='frederic.achard@saint-gobain.com'
+
 let g:snips_github='none'
 let g:github='none'
+
+let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-j>"
+
+exec ':set runtimepath+=' . expand('$HOME') .  "\\vimfiles\\Snippets"
+
+" Autocmd Macros {{{
 
 " Complete UltiSnip snippets with <tab>
 function! g:UltiSnips_Complete()
@@ -25,11 +34,5 @@ function! g:UltiSnips_Complete()
     return ""
 endfunction
 
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-
-let g:UltiSnipsExpandTrigger       = "<tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-j>"
-
+" }}}
 

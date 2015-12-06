@@ -35,6 +35,7 @@ let g:NERDTreeWinPos = "right"
 " Go to previous (last accessed) window.
 "autocmd VimEnter * wincmd p
 
+" Autocmd Macros {{{
 
 "NERDTree update
 function! UpdateNerdTree()
@@ -42,4 +43,5 @@ function! UpdateNerdTree()
     wincmd p
 endfunction
 
+" }}}
 

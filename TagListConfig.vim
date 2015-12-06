@@ -8,17 +8,6 @@
     " Indiquer le chemin de ctags
     let Tlist_Ctags_Cmd = g:IsWindowsOS ? 'ctags.exe' : '/usr/local/bin/ctags'
 
-    " Langages
-    au BufRead,BufNewFile *.js      set filetype=javascript
-    au BufRead,BufNewFile *.as      set filetype=actionscript
-    au BufRead,BufNewFile *.css     set filetype=css
-    au BufRead,BufNewFile *.scss    set filetype=scss
-    au BufRead,BufNewFile *.php     set filetype=php
-    au BufRead,BufNewFile *.cpp     set filetype=cpp
-    au BufRead,BufNewFile *.c       set filetype=c
-    au BufRead,BufNewFile *.py      set filetype=python
-
-
     let tlist_javascript_settings   = 'vimjavascript;c:CLASSES;p:PROPERTIES;g:GETTER/SETTER;f:METHODS'
     let tlist_actionscript_settings = 'vimactionscript;c:CLASSES;f:METHODS;p:PROPERTIES'
     let tlist_css_settings          = 'vimcss;e:SECTIONS'
@@ -44,10 +33,10 @@
     let Tlist_Process_File_Always = 0
 
     " Ouvrir le panneau à droite
-    let Tlist_Use_Right_Window = 1
+    let Tlist_Use_Right_Window = 0
 
     " Largeur du panneau
-    let Tlist_WinWidth = 60
+    let Tlist_WinWidth = 40
 
     " Le contenu du panneau ne représente que le fichier courant
     let Tlist_Show_One_File = 1
@@ -58,12 +47,7 @@
     " Replie automatiquement les fichiers inactifs
     let Tlist_File_Fold_Auto_Close = 1
 
-    "let Tlist_Use_SingleClick = 1
-
-    " F8 : [PLUGIN] TList
-    "map <silent> <F8> :execute ToggleTList()<cr>
-    "imap <F8> <Esc><F8>
-    "vmap <F8> <Esc><F8>
+    let Tlist_Use_SingleClick = 1
 
     " Afficher / Cacher TList
     let g:tlistopened=0

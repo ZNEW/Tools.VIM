@@ -1,7 +1,8 @@
 
 " Snippets variables
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
-:exec ':set runtimepath+=' . expand('$HOME') .  "\\vimfiles\\Snippets"
+exec ':set runtimepath+=' . expand('$HOME') .  "\\vimfiles\\Snippets"
+
 let g:snips_author='Frederic ACHARD'
 let g:author='Frederic ACHARD'
 let g:snips_email='frederic.achard@gmail.com'
@@ -25,8 +26,8 @@ function! g:UltiSnips_Complete()
     return ""
 endfunction
 
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+
+
 
 let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"

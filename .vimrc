@@ -37,13 +37,23 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/YouCompleteMe.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Backup.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/WindowsTransparencyOnFocus.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/MiniBufExplorer.Config.vim'
 
 :exec ':source ' . g:UserVimFilesFolderName . '/KeyMapping.vim'
 
 :exec ':source ' . g:UserVimFilesFolderName . '/Test.vim'
 
-:set foldmethod=indent
-:set foldlevel=2
-:set foldlevelstart=20
 
 let NERDTreeIgnore=['\.meta$', '\.*\~$']
+
+" Tests
+" A chercher sur le web
+au BufRead,BufNewFile *.cs      set filetype=cs
+au BufRead,BufNewFile *.vim      set filetype=vim
+"autocmd FileType cs im :<CR> :<CR><TAB>
+
+
+
+
+
+

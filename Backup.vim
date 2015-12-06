@@ -10,6 +10,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-set noundofile
+"set noundofile
 
 

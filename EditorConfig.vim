@@ -47,10 +47,6 @@ set autoread
 set title
 set linebreak
 
-" Note, perl automatically sets foldmethod in the syntax file
-autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
-autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zRt
-autocmd BufNewFile,BufRead *.xml setf xml
 
 "Disable beeping & enable visualbell
 set noeb vb t_vb= "set noerrorbells visualbell t_vb=
@@ -66,14 +62,11 @@ if has('gui_running')
 "  set guioptions=egmrt  " hide the gui menubar
 endif
 
-let g:airline_powerline_fonts=1
 
-set nobackup
-set nowritebackup
+"set nobackup
+"set nowritebackup
 
-set noeb vb t_vb=
-
-let g:airline_powerline_fonts=1
+:let g:airline_powerline_fonts=1
 
 
 "set wrap " Enable wrapping
@@ -84,14 +77,16 @@ set textwidth=129
 "  au BufRead,BufNewFile *.txt set wm=2 tw=80
 "endif
 
+set foldmethod=indent
+set foldlevel=2
+set foldlevelstart=20
 
-"NERDTree update
-function! UpdateNerdTree()
-    NERDTreeFind
-    wincmd p
-endfunction
+set lazyredraw
+set nolazyredraw " don't redraw while executing macros
+set magic " Set magic on, for regex
 
-autocmd TabEnter * call UpdateNerdTree()
+
+" KeyMapping Macros {{{
 
 "Tab & Syntax update
 let g:mySyntax = 0
@@ -109,15 +104,4 @@ function! UpdateTab()
     endif
 endfunction
 
-function! g:EditInNewTab(v)
-    if has('gui_running')
-        if (has('win32') || has('win64'))
-            :tabnew<CR>
-            :exec ':e! ' . a:v
-        else
-            :echo "Pouet"<CR>
-        endif
-    endif
-endfunction
-
-
+" }}}
