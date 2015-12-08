@@ -181,7 +181,7 @@ function! WinMove(key)
   endfunction
 
 
-function! g:EditInNewTab(v)
+function! EditInNewTab(v)
     if has('gui_running')
         if (has('win32') || has('win64'))
             :tabnew<CR>
@@ -192,14 +192,14 @@ function! g:EditInNewTab(v)
     endif
 endfunction
 
-function! g:findInpuDialogTextInSubFolder()
+function! g:FindInpuDialogTextInSubFolder()
   if has('gui_running')
     let g:searchedText = inputdialog("Search:")
-    :call g:findInSubFolder(g:searchedText)
+    :call g:FindInSubFolder(g:searchedText)
   endif
 endfunction
 
-function! g:findInSubFolder(v)
+function! g:FindInSubFolder(v)
   if has('gui_running')
     :exec ':noautocmd vimgrep /\<' . a:v . '\>/ **/*.cs'
     :copen
