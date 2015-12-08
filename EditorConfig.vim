@@ -47,6 +47,7 @@ set autoread
 set title
 set linebreak
 
+set so=15
 
 "Disable beeping & enable visualbell
 set noeb vb t_vb= "set noerrorbells visualbell t_vb=
@@ -56,7 +57,7 @@ set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 
 if has('gui_running')
-  set guifont=Inconsolata_for_Powerline:h10    " set fonts for gui vim
+  set guifont=Inconsolata_for_Powerline:h12    " set fonts for gui vim
   "set transparency=10        " set transparent window
   "call libcallnr("vimtweak.dll", "SetAlpha", 210) 
 "  set guioptions=egmrt  " hide the gui menubar

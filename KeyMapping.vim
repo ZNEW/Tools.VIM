@@ -21,15 +21,15 @@ nnoremap H ^i
 nnoremap L g_A
 
 "centered search
-nnoremap n nzzzv
+"nnoremap n nzzzv
 "wincmd p
-nnoremap N Nzzzv
+"nnoremap N Nzzzv
 
 "centered scrolling
-nnoremap j jzz
-nnoremap k kzz
-nnoremap <Down> jzz
-nnoremap <Up> kzz
+"nnoremap j jzz
+"nnoremap k kzz
+"nnoremap <Down> jzz
+"nnoremap <Up> kzz
 
 " easier formatting of paragraphs
 vmap Q gq
@@ -42,7 +42,7 @@ vnoremap > >gv " better indentation
 "nnoremap ` @a
 "vnoremap ` :normal @a<CR>
 " mark access
-nnoremap ' `
+"nnoremap ' `
 
 "Do not move on *
 nnoremap * *<c-o>
@@ -54,7 +54,6 @@ vnoremap <BS> d
 
 map <F2> :echo 'Current time is ' . strftime('%c')<CR>
 map <F3> :execute ":noautocmd vimgrep /\\\<" . expand("<cword>") . "\\\>/j **/*.cs" <Bar> cw<CR>
-map <F3> :call OpenCSharpFile()<CR>
 map <F4> :execute "lcd %:p:h"
 
 map <F5> :call UpdateTab()<CR>
@@ -62,7 +61,7 @@ map <F7> :cprev<CR>
 map <F8> :cnext<CR>
 
 " F8 : [PLUGIN] TList
-map <silent> <F8> :execute ToggleTList()<cr>
+map <silent> <C-F8> :execute ToggleTList()<cr>
 "imap <F8> <Esc><F8>
 "vmap <F8> <Esc><F8>
 
@@ -74,6 +73,7 @@ map <S-F3> :call UpdatePath()<CR>
 " CTRL + Fxx
 
 " build tags of your own project with Ctrl-F12
+map <C-F3> :call OpenCSharpFile()<CR>
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 

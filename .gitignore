@@ -1,4 +1,8 @@
 bundle/
+bundle/YouCompleteMe
 .netrwhist
 backup/
 .DS_Store
+*.vim~
+*.*~
+

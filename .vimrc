@@ -52,8 +52,65 @@ au BufRead,BufNewFile *.cs      set filetype=cs
 au BufRead,BufNewFile *.vim      set filetype=vim
 "autocmd FileType cs im :<CR> :<CR><TAB>
 
+" Silver Searcher
+if executable('ag')
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+    " Make CtrlP use ag for listing the files. Way faster and no useless files.
+    " Without --hidden, it never finds .travis.yml since it starts with a dot
+    let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+    let g:ctrlp_use_caching = 0
+endif
 
 
+" Tests on Font Size 
+map <C-f><C-u> :call g:setFontBigger()<CR>
+map <C-f><C-s> :call g:setFontSmaler()<CR>
+
+let g:fontHeightList = [6, 7, 8, 8, 10, 11, 12, 14, 16, 18]
+let g:fontHeightListMin = 0
+let g:fontHeightListMax = 9
+let g:currentFontHeightID = 8
+let g:currentFontHeight=12
+
+function! g:setFontBigger()
+
+  let g:currentFontHeightID += 1
+
+  if g:currentFontHeightID > g:fontHeightListMax
+    let g:currentFontHeightID = g:fontHeightListMax
+  endif
+
+  let g:currentFontHeight = g:fontHeightList[g:currentFontHeightID]
+
+  call g:setFontHeight( g:currentFontHeight )
+
+  set laststatus=2
+
+endfunction
+
+function! g:setFontSmaler()
+
+  let g:currentFontHeightID -= 1
+
+  if g:currentFontHeightID < g:fontHeightListMin
+    let g:currentFontHeightID = g:fontHeightListMin
+  endif
+
+  let g:currentFontHeight = g:fontHeightList[g:currentFontHeightID]
+
+  call g:setFontHeight( g:currentFontHeight )
+
+  set laststatus=2
+
+endfunction
+
+let g:currentFontName='Inconsolata_for_Powerline'
+
+function! g:setFontHeight(v)
+  :exec ':set guifont=' . g:currentFontName . ':h' . a:v
+endfunction
 
 
 
