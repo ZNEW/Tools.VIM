@@ -47,7 +47,7 @@ set autoread
 set title
 set linebreak
 
-set so=15
+"set so=15
 
 "Disable beeping & enable visualbell
 set noeb vb t_vb= "set noerrorbells visualbell t_vb=
