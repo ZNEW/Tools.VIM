@@ -112,5 +112,3 @@ function! g:setFontHeight(v)
   :exec ':set guifont=' . g:currentFontName . ':h' . a:v
 endfunction
 
-
-
