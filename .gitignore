@@ -2,3 +2,6 @@ bundle/
 .netrwhist
 backup/
 .DS_Store
+*.vim~
+*.*~
+
