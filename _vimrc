@@ -37,53 +37,112 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/YouCompleteMe.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Backup.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/WindowsTransparencyOnFocus.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/MiniBufExplorer.Config.vim'
 
 :exec ':source ' . g:UserVimFilesFolderName . '/KeyMapping.vim'
 
 :exec ':source ' . g:UserVimFilesFolderName . '/Test.vim'
 
-let g:vim_php_refactoring_use_default_mapping = 0
-" Refactoring mapping {{{
-if g:vim_php_refactoring_use_default_mapping == 0
-    "nnoremap <unique> <Leader>prlv :call PhpRenameLocalVariable()<CR>
-    "nnoremap <unique> <Leader>prcv :call PhpRenameClassVariable()<CR>
-    nnoremap <unique> <Leader>prm :call PhpRenameMethod()<CR>
-    nnoremap <unique> <Leader>peu :call PhpExtractUse()<CR>
-    vnoremap <unique> <Leader>pec :call PhpExtractConst()<CR>
-    nnoremap <unique> <Leader>pep :call PhpExtractClassProperty()<CR>
-    vnoremap <unique> <Leader>pem :call PhpExtractMethod()<CR>
-    nnoremap <unique> <Leader>pnp :call PhpCreateProperty()<CR>
-    nnoremap <unique> <Leader>pdu :call PhpDetectUnusedUseStatements()<CR>
-    vnoremap <unique> <Leader>p== :call PhpAlignAssigns()<CR>
-    nnoremap <unique> <Leader>psg :call PhpCreateSettersAndGetters()<CR>
-    nnoremap <unique> <Leader>pda :call PhpDocAll()<CR>
-endif
-" }}}
-
-
-:set foldmethod=indent
-:set foldlevel=2
-:set foldlevelstart=20
 
 let NERDTreeIgnore=['\.meta$', '\.*\~$']
 
-nnoremap <leader>e :call g:EditInNewTab( expand( '$HOME' ) . '/' . expand( g:UserVimrcFileName ) )<CR>
-map <leader>r :NERDTreeFind<cr>
-"map <C-o> :NERDTreeToggle %<CR>
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+" Tests
+" A chercher sur le web
+au BufRead,BufNewFile *.cs      set filetype=cs
+au BufRead,BufNewFile *.vim      set filetype=vim
+"autocmd FileType cs im :<CR> :<CR><TAB>
 
-nnoremap <TAB><TAB> :tabn<cr>
-
-
-" list files, it's the key setting, if you haven't set,
-" you will get a blank buffer
-" let g:netrw_ssh_cmd  = "plink -T -ssh "
-let g:netrw_ssh_cmd  = "ssh -i \%USERPROFILE\%\\.ssh\\id_rsa"
-"let g:netrw_list_cmd = 'plink HOSTNAME ls -Fa '
-" if you haven't add putty directory in system path, you should
-" specify scp/sftp command.  For examples:
-"let g:netrw_sftp_cmd = 'PSFTP.exe '
-"let g:netrw_scp_cmd = 'PSCP.exe -q -batch '
-"let g:netrw_silent = 1
+" Silver Searcher
+if executable('ag')
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+    " Make CtrlP use ag for listing the files. Way faster and no useless files.
+    " Without --hidden, it never finds .travis.yml since it starts with a dot
+    let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+    let g:ctrlp_use_caching = 0
+endif
 
 
+" Tests on Font Size 
+map <C-f><C-u> :call g:SetFontBigger()<CR>
+map <C-f><C-s> :call g:SetFontSmaler()<CR>
+
+let g:fontHeightList = [6, 7, 8, 8, 10, 11, 12, 14, 16, 18]
+let g:fontHeightListMin = 0
+let g:fontHeightListMax = 9
+let g:currentFontHeightID = 8
+let g:currentFontHeight=12
+
+function! g:SetFontBigger()
+
+  let g:currentFontHeightID += 1
+
+  if g:currentFontHeightID > g:fontHeightListMax
+    let g:currentFontHeightID = g:fontHeightListMax
+  endif
+
+  let g:currentFontHeight = g:fontHeightList[g:currentFontHeightID]
+
+  call g:SetFontHeight( g:currentFontHeight )
+
+  set laststatus=2
+
+endfunction
+
+function! g:SetFontSmaler()
+
+  let g:currentFontHeightID -= 1
+
+  if g:currentFontHeightID < g:fontHeightListMin
+    let g:currentFontHeightID = g:fontHeightListMin
+  endif
+
+  let g:currentFontHeight = g:fontHeightList[g:currentFontHeightID]
+
+  call g:SetFontHeight( g:currentFontHeight )
+
+  set laststatus=2
+
+endfunction
+
+let g:currentFontName='Inconsolata_for_Powerline'
+
+function! g:SetFontHeight(v)
+  :exec ':set guifont=' . g:currentFontName . ':h' . a:v
+endfunction
+
+:imap ,, <Esc>
+
+au BufEnter *.txt set so=15
+au BufEnter *.cs set so=15
+
+au BufLeave *.txt set so=1
+au BufLeave *.cs set so=1
+
+
+" Refactoring mapping {{{
+
+if exists("vim_php_refactoring_mapping")
+  finish
+endif
+
+let g:vim_php_refactoring_use_default_mapping = 0
+
+if g:vim_php_refactoring_use_default_mapping == 0 
+  nnoremap <unique> <Leader>prlv :call PhpRenameLocalVariable()<CR>
+  nnoremap <unique> <Leader>prcv :call PhpRenameClassVariable()<CR>
+  nnoremap <unique> <Leader>prm :call PhpRenameMethod()<CR>
+  nnoremap <unique> <Leader>peu :call PhpExtractUse()<CR>
+  vnoremap <unique> <Leader>pec :call PhpExtractConst()<CR>
+  nnoremap <unique> <Leader>pep :call PhpExtractClassProperty()<CR>
+  vnoremap <unique> <Leader>pem :call PhpExtractMethod()<CR>
+  nnoremap <unique> <Leader>pnp :call PhpCreateProperty()<CR>
+  nnoremap <unique> <Leader>pdu :call PhpDetectUnusedUseStatements()<CR>
+  vnoremap <unique> <Leader>p== :call PhpAlignAssigns()<CR>
+  nnoremap <unique> <Leader>psg :call PhpCreateSettersAndGetters()<CR>
+  nnoremap <unique> <Leader>pda :call PhpDocAll()<CR>
+endif
+let vim_php_refactoring_mapping = 1
+" }}}
+" 
