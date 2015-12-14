@@ -90,3 +90,21 @@
 [submodule "bundle/vim-misc"]
 	path = bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
+[submodule "bundle/vim-scripts/Decho"]
+	path = bundle/vim-scripts/Decho
+	url = https://github.com/vim-scripts/Decho.git
+[submodule "bundle/vim-scripts/fontsize"]
+	path = bundle/vim-scripts/fontsize
+	url = https://github.com/vim-scripts/fontsize.git
+[submodule "bundle/xolox/vim-notes"]
+	path = bundle/xolox/vim-notes
+	url = https://github.com/xolox/vim-notes.git
+[submodule "bundle/scrooloose/syntastic"]
+	path = bundle/scrooloose/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/xolox/vim-misc"]
+	path = bundle/xolox/vim-misc
+	url = https://github.com/xolox/vim-misc.git
+[submodule "bundle/adoy/vim-php-refactoring-toolbox"]
+	path = bundle/adoy/vim-php-refactoring-toolbox
+	url = https://github.com/adoy/vim-php-refactoring-toolbox.git
