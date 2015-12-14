@@ -65,8 +65,8 @@ endif
 
 
 " Tests on Font Size 
-map <C-f><C-u> :call g:setFontBigger()<CR>
-map <C-f><C-s> :call g:setFontSmaler()<CR>
+map <C-f><C-u> :call g:SetFontBigger()<CR>
+map <C-f><C-s> :call g:SetFontSmaler()<CR>
 
 let g:fontHeightList = [6, 7, 8, 8, 10, 11, 12, 14, 16, 18]
 let g:fontHeightListMin = 0
@@ -74,7 +74,7 @@ let g:fontHeightListMax = 9
 let g:currentFontHeightID = 8
 let g:currentFontHeight=12
 
-function! g:setFontBigger()
+function! g:SetFontBigger()
 
   let g:currentFontHeightID += 1
 
@@ -84,13 +84,13 @@ function! g:setFontBigger()
 
   let g:currentFontHeight = g:fontHeightList[g:currentFontHeightID]
 
-  call g:setFontHeight( g:currentFontHeight )
+  call g:SetFontHeight( g:currentFontHeight )
 
   set laststatus=2
 
 endfunction
 
-function! g:setFontSmaler()
+function! g:SetFontSmaler()
 
   let g:currentFontHeightID -= 1
 
@@ -100,7 +100,7 @@ function! g:setFontSmaler()
 
   let g:currentFontHeight = g:fontHeightList[g:currentFontHeightID]
 
-  call g:setFontHeight( g:currentFontHeight )
+  call g:SetFontHeight( g:currentFontHeight )
 
   set laststatus=2
 
@@ -108,7 +108,34 @@ endfunction
 
 let g:currentFontName='Inconsolata_for_Powerline'
 
-function! g:setFontHeight(v)
+function! g:SetFontHeight(v)
   :exec ':set guifont=' . g:currentFontName . ':h' . a:v
 endfunction
+
+:imap ,, <Esc>
+
+au BufEnter *.txt set so=15
+au BufEnter *.cs set so=15
+
+au BufLeave *.txt set so=1
+au BufLeave *.cs set so=1
+
+let g:vim_php_refactoring_use_default_mapping = 0
+" Refactoring mapping {{{
+if g:vim_php_refactoring_use_default_mapping == 0
+    "nnoremap <unique> <Leader>prlv :call PhpRenameLocalVariable()<CR>
+    "nnoremap <unique> <Leader>prcv :call PhpRenameClassVariable()<CR>
+    nnoremap <unique> <Leader>prm :call PhpRenameMethod()<CR>
+    nnoremap <unique> <Leader>peu :call PhpExtractUse()<CR>
+    vnoremap <unique> <Leader>pec :call PhpExtractConst()<CR>
+    nnoremap <unique> <Leader>pep :call PhpExtractClassProperty()<CR>
+    vnoremap <unique> <Leader>pem :call PhpExtractMethod()<CR>
+    nnoremap <unique> <Leader>pnp :call PhpCreateProperty()<CR>
+    nnoremap <unique> <Leader>pdu :call PhpDetectUnusedUseStatements()<CR>
+    vnoremap <unique> <Leader>p== :call PhpAlignAssigns()<CR>
+    nnoremap <unique> <Leader>psg :call PhpCreateSettersAndGetters()<CR>
+    nnoremap <unique> <Leader>pda :call PhpDocAll()<CR>
+endif
+" }}}
+
 
