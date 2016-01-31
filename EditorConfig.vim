@@ -1,4 +1,11 @@
 
+au FileType {vim,javascript} setlocal foldmethod=marker
+au FileType {cs,c} setlocal foldmethod=indent
+
+set foldmethod=indent
+set foldlevel=2
+set foldlevelstart=20
+
 au BufEnter *.txt set so=15
 au BufEnter *.cs set so=15
 au BufEnter *.vim* set so=15
@@ -92,9 +99,6 @@ set textwidth=129
 "  au BufRead,BufNewFile *.txt set wm=2 tw=80
 "endif
 
-set foldmethod=indent
-set foldlevel=2
-set foldlevelstart=20
 
 set lazyredraw
 set nolazyredraw " don't redraw while executing macros

@@ -1,8 +1,4 @@
 set nocompatible
-scriptencoding utf-8
-set encoding=UTF-8  " The encoding displayed.
-set fileencoding=UTF-8  " The encoding written to file
-
 filetype off
 
 " Setup Pathogen to manage your plugins
@@ -10,6 +6,10 @@ filetype off
 " curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 "Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
+
+scriptencoding utf-8
+set encoding=UTF-8  " The encoding displayed.
+set fileencoding=UTF-8  " The encoding written to file
 
 filetype plugin indent on
 
@@ -30,7 +30,6 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 ":exec ':source ' . g:UserVimFilesFolderName . '/Quicksave.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Refactoring.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/RestoreLastCursorPos.vim'
-:exec ':source ' . g:UserVimFilesFolderName . '/Snips.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/TagListConfig.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/ThemeAndSyntaxHighlighting.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/UltiSnips.vim'
