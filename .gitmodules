@@ -75,9 +75,6 @@
 [submodule "bundle/fontsize"]
 	path = bundle/fontsize
 	url = https://github.com/vim-scripts/fontsize.git
-[submodule "bundle/VIM-PHP-Refactoring-Toolbox"]
-	path = bundle/VIM-PHP-Refactoring-Toolbox
-	url = https://github.com/vim-scripts/VIM-PHP-Refactoring-Toolbox.git
 [submodule "bundle/Decho"]
 	path = bundle/Decho
 	url = https://github.com/vim-scripts/Decho.git
