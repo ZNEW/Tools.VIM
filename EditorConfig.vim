@@ -1,4 +1,18 @@
 
+au BufEnter *.txt set so=15
+au BufEnter *.cs set so=15
+au BufEnter *.vim* set so=15
+
+au BufLeave *.txt set so=1
+au BufLeave *.cs set so=1
+au BufLeave *.vim* set so=1
+
+" Tests
+" A chercher sur le web
+au BufRead,BufNewFile *.cs      set filetype=cs
+au BufRead,BufNewFile *.vim      set filetype=vim
+"autocmd FileType cs im :<CR> :<CR><TAB>
+
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
 " paste. At the bottom you should see ``-- INSERT (paste) --``.

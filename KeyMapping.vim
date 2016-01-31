@@ -1,4 +1,19 @@
 
+" Key mapping tests {{{
+
+map <C-f><C-u> :call g:SetFontBigger()<CR>
+map <C-f><C-s> :call g:SetFontSmaler()<CR>
+
+:imap ,, <Esc>
+
+:imap <CR> <CR><Esc>zzi
+:nmap <Up> k
+:nmap <Down> j
+:nmap <Space> <PageDown>
+:nmap <S-Space> <PageUp>
+
+" }}}
+
 " Key mapping {{{
 
 "Suppresion de la fin de la ligne
@@ -98,6 +113,8 @@ map <leader>f :call g:findInpuDialogTextInSubFolder()<CR>
 map <leader>dj ]c
 map <leader>dk [c
 map <leader>du <esc>:diffupdate<CR>
+map <leader>dgh <esc>:diffget //2 <Bar> diffupdate<CR>
+map <leader>dgl <esc>:diffget //3 <Bar> diffupdate<CR>
 " }}}
 
 " Tab & key {{{

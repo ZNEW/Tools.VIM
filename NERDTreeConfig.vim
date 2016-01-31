@@ -1,3 +1,5 @@
+let NERDTreeIgnore=['\.meta$', '\.*\~$']
+
 " [PLUGIN] NERDTree {{{1
 " ----------------------
     " Ouvrir NERDTree à chaque fois qu'on lance vim
