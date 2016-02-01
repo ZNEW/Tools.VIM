@@ -1,10 +1,12 @@
+" Leader key
+let mapleader = ","
 
 " Key mapping tests {{{
 
 map <C-f><C-u> :call g:SetFontBigger()<CR>
 map <C-f><C-s> :call g:SetFontSmaler()<CR>
 
-:imap ,, <Esc>
+:imap <leader><leader> <Esc>
 
 :imap <CR> <CR><Esc>zzi
 :nmap <Up> k
@@ -12,6 +14,7 @@ map <C-f><C-s> :call g:SetFontSmaler()<CR>
 :nmap <Space> <PageDown>
 :nmap <S-Space> <PageUp>
 
+:nmap <leader>s :UltiSnipsEdit<CR>
 " }}}
 
 " Key mapping {{{
@@ -95,8 +98,6 @@ map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " }}}
 
 " Leader mapping {{{
-" Leader key
-let mapleader = ","
 
 " leader + key
 nnoremap <leader>e :call g:EditInNewTab('c:\users\F8296572\_vimrc')<CR>
@@ -104,8 +105,8 @@ map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 noremap <Leader>q :quit<CR>
 noremap <Leader>Q :qa!<CR>
-nnoremap <leader>scs :call g:EditInNewTab('c:\users\F8296572\vimfiles\snippets\cs.snippets')<CR>
-nnoremap <leader>uscs :call g:EditInNewTab('c:\users\F8296572\vimfiles\UltiSnips\cs.snippets')<CR>
+"nnoremap <leader>scs :call g:EditInNewTab('c:\users\F8296572\vimfiles\snippets\cs.snippets')<CR>
+"nnoremap <leader>uscs :call g:EditInNewTab('c:\users\F8296572\vimfiles\UltiSnips\cs.snippets')<CR>
 map <leader>f :call g:findInpuDialogTextInSubFolder()<CR>
 
 " leader + keys

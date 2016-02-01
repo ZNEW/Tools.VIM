@@ -105,3 +105,4 @@
 [submodule "bundle/adoy/vim-php-refactoring-toolbox"]
 	path = bundle/adoy/vim-php-refactoring-toolbox
 	url = https://github.com/adoy/vim-php-refactoring-toolbox.git
+  ignore = dirty

@@ -44,4 +44,6 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 
 :exec ':source ' . g:UserVimFilesFolderName . '/Test.vim'
 
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
