@@ -14,9 +14,9 @@ endif
 
 "You can place such a global file anywhere in your filesystem.
 if ( has('win32') || has('win64') )
-    let g:ycm_global_ycm_extra_conf = '$HOME/vimfiles/ycm_extra_conf.WIN.py'
+    let g:ycm_global_ycm_extra_conf = expand("$HOME") . '\vimfiles\ycm_extra_conf.WIN.py'
 else
-    let g:ycm_global_ycm_extra_conf = '$HOME/vimfiles/ycm_extra_conf.OSX.py'
+    let g:ycm_global_ycm_extra_conf = expand("$HOME") .'/.vim/ycm_extra_conf.OSX.py'
 endif
 
 "-------------------------------------------------------------------------------
@@ -31,4 +31,4 @@ endif
 
 "Default: '1'
 
-"let g:ycm_confirm_extra_conf = 1
+let g:ycm_confirm_extra_conf = 0

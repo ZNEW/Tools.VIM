@@ -1,11 +1,26 @@
 " Tests on Font Size 
+if has('gui_running')
+  "set guifont=Inconsolata_for_Powerline:h12    " set fonts for gui vim
+  "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+  if( g:IsWindowsOS )
+    set guifont=DejaVu_Sans_Mono_for_Powerline:h11    " set fonts for gui vim
+  else
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11    " set fonts for gui vim
+  endif
+  "set transparency=10        " set transparent window
+  "call libcallnr("vimtweak.dll", "SetAlpha", 210) 
+"  set guioptions=egmrt  " hide the gui menubar
+endif
 
-let g:currentFontName='Inconsolata_for_Powerline'
+"let g:currentFontName='Inconsolata_for_Powerline'
+"let g:currentFontName='DejaVu\ Sans\ Mono\ for\ Powerline'
+"let g:currentFontName='DejaVu_Sans_Mono_for_Powerline'
+let g:currentFontName = g:IsWindowsOS ? 'DejaVu_Sans_Mono_for_Powerline' : 'DejaVu\ Sans\ Mono\ for\ Powerline'
 let g:fontHeightList = [6, 7, 8, 8, 10, 11, 12, 14, 16, 18]
 let g:fontHeightListMin = 0
 let g:fontHeightListMax = 9
 let g:currentFontHeightID = 8
-let g:currentFontHeight=12
+let g:currentFontHeight=11
 
 function! g:SetFontBigger()
 

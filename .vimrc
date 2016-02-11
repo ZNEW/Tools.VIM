@@ -1,21 +1,28 @@
 set nocompatible
+
+let g:IsWindowsOS = (has('win32') || has('win64'))
+let g:UserVimrcFileName = g:IsWindowsOS ? '_vimrc' : '.vimrc'
+let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
+
 filetype off
 
 " Setup Pathogen to manage your plugins
 " mkdir -p ~/.vim/autoload ~/.vim/bundle
 " curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 "Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-call pathogen#infect()
+"call pathogen#infect()
+if( g:IsWindowsOS )
+  execute pathogen#infect('bundle/{}', 'bundle/xolox/{}', 'bundle/adoy/{}')
+else
+  execute pathogen#infect('bundle/{}', 'bundle/xolox/{}', 'bundle/adoy/{}')
+endif
 
 scriptencoding utf-8
-set encoding=UTF-8  " The encoding displayed.
-set fileencoding=UTF-8  " The encoding written to file
+set encoding=utf-8  " The encoding displayed.
+set fileencoding=utf-8  " The encoding written to file
 
 filetype plugin indent on
 
-let g:IsWindowsOS = (has('win32') || has('win64'))
-let g:UserVimrcFileName = g:IsWindowsOS ? '_vimrc' : '.vimrc'
-let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 
 :exec ':source ' . g:UserVimFilesFolderName . '/Abbreviations.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/Autocmd.vim'
@@ -41,9 +48,8 @@ let g:UserVimFilesFolderName = g:IsWindowsOS ? '$HOME/vimfiles' : '$HOME/.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/myFontSize.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/adoy.vim-php-refactoring-toolbox.vim'
 :exec ':source ' . g:UserVimFilesFolderName . '/silver-searcher.vim'
+:exec ':source ' . g:UserVimFilesFolderName . '/vim-notes.vim'
 
 :exec ':source ' . g:UserVimFilesFolderName . '/Test.vim'
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 

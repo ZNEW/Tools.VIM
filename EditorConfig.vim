@@ -77,14 +77,6 @@ autocmd GUIEnter * set visualbell t_vb=
 set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 
-if has('gui_running')
-  set guifont=Inconsolata_for_Powerline:h12    " set fonts for gui vim
-  "set transparency=10        " set transparent window
-  "call libcallnr("vimtweak.dll", "SetAlpha", 210) 
-"  set guioptions=egmrt  " hide the gui menubar
-endif
-
-
 "set nobackup
 "set nowritebackup
 

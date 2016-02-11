@@ -13,14 +13,12 @@ let g:ctags_args = '-I __declspec+'
 let TagsFolderName = g:IsWindowsOS ? '$HOME/tags/Win' : '$HOME/tags/OSX'
 
 "" configure tags - add additional tags here or comment out not-used ones
-"":exec ':set tags+=' . s:TagsFolderName . '/cpp/cpp.tags'
-"":exec ':set tags+=' . s:TagsFolderName . '/cpp/OpenGL.tags'
-"":exec ':set tags+=' . s:TagsFolderName . '/cpp/GLUT.tags'
-"":exec ':set tags+=' . s:TagsFolderName . '/python/python.tags'
-"" configure tags - add additional tags here or comment out not-used ones
-exec ':set tags+=' . TagsFolderName . '/cpp/cpp.tags'
-exec ':set tags+=' . TagsFolderName . '/cpp/OpenGL.tags'
-exec ':set tags+=' . TagsFolderName . '/cpp/GLUT.tags'
-exec ':set tags+=' . TagsFolderName . '/python/python.tags'
 
-
+if ( g:IsWindowsOS )
+  set tags+='X:\Frameworks\tags\cpp\QT.tags'
+else
+  exec ':set tags+=' . TagsFolderName . '/cpp/cpp.tags'
+  exec ':set tags+=' . TagsFolderName . '/cpp/OpenGL.tags'
+  exec ':set tags+=' . TagsFolderName . '/cpp/GLUT.tags'
+  exec ':set tags+=' . TagsFolderName . '/python/python.tags'
+endif

@@ -1,0 +1,30 @@
+# global !p
+# def fraction(a, b):
+#    try:
+#        return "%.1f" % (float(a)/float(b))
+#    except (ValueError, ZeroDivisionError):
+#        return "ERR"
+#endglobal
+
+global !p
+from snippet_helpers import *
+endglobal
+
+snippet 75wrds "Log a 750words.com session" b
+750words.com: ${1:750} words in ${2:20} minutes - `!p
+snip.rv = fraction(t[1], t[2])
+` wpm.
+endsnippet
+
+snippet tv "${VISUAL} test" b
+********************************************************************************
+	${VISUAL} $1
+********************************************************************************
+$0
+endsnippet
+
+snippet tvd "${VISUAL} test with default" b
+********************************************************************************
+	${0:${VISUAL:default Text}}
+********************************************************************************
+endsnippet

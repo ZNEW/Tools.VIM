@@ -377,4 +377,6 @@ brew install tmux
 other :
     yss
 
+:w ++ff=unix
+
 
