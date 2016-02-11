@@ -18,7 +18,7 @@ let NERDTreeIgnore=['\.meta$', '\.*\~$']
     let g:nerdtree_tabs_focus_on_files = 1
 
     " Ne pas ignorer de fichiers
-    let NERDTreeIgnore=[]
+    "let NERDTreeIgnore=[]
 
     " Affichier les dossiers et fichiers cachés
     let NERDTreeShowHidden=1
